@@ -1,0 +1,146 @@
+*{
+    margin:0;
+    border:border-box;
+}
+.navbar{
+    height:80px;
+    background-color: darkblue;
+    color:aliceblue;
+    
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.nav-logos{
+    width:90px;
+    height:80px;
+    display:flex;
+
+    
+}
+.add-icon{
+    display:flex;
+    align-items: center;
+    margin-left: 5px;
+    color: #e25f18;
+}
+.border{
+    border:2px 20px 2px 20px solid transparent;
+}
+.border:hover{
+    border:2px dotted yellow;
+}
+.select{
+    height: 30px;
+    width: 60px;
+    background-color: darkblue;
+    color:chartreuse;
+    display:flex;
+    margin-top: 25px;
+    margin-left:30px;
+}
+.Search{
+    height:30px;
+    width: 520px;
+    display:flex;
+    margin-top: 22px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.search-option{
+    height: 33px;
+    width: 80px;
+    margin-top:23px;
+    background-color: yellow;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+    color:black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-search{
+    display:flex;
+}
+.signin{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.nav-sec{
+    font-size: 20px;
+}
+.nav-cart{
+    height: 80px;
+    width: 80px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:aquamarine;
+    margin-left: 20px;
+}   
+.panel{
+    background-color: #e25f18;
+    height: 40px;
+    color:white;
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+
+}
+.panel-op1 p {
+    display:inline;
+    margin-left: 10px;
+}
+.panel-op1{
+    width:70%;
+}
+.hero-section{
+    background-size: cover;
+    margin-top: 40px; /* Adjust as needed */
+    display: flex;
+}
+.hero-msg{
+    background-color: rgba(235, 246, 255, 0.893);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    
+}
+.hero-msg a{
+    color: blue;
+}
+.shop-area{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #e2e7e6;
+}
+.box{
+    border: 2px solid rgb(34, 105, 150);
+    height: 250px;
+    width:23%;
+    background-color: rgb(218, 213, 216);
+    padding: 16px 0px 12px;
+}
+.box-img{
+    height: 200px;
+}
+.box-content{
+    margin-left:8px;
+    margin-right: 8px;
+}
+.about-campro{
+    color: rgb(241, 31, 11);
+    background-image: linear-gradient(to right, rgb(111, 149, 108), rgb(76, 99, 118), rgb(93, 98, 66));
+    border:5px groove rgb(77, 110, 230);
+    padding: 5px;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-shadow: 5px 5px 5px rgb(3, 3, 2);
+
+}
+.text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: black;
+}

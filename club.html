@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIT Pune - Student Clubs Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #587c9f;
+            --secondary: #020f6e;
+            --accent: #df2510;
+            --light: #d1dcde;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #dd8d0c;
+            --danger: #e74c3c;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* Club Cards */
+        .clubs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .club-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .club-header {
+            background: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .club-body {
+            padding: 20px;
+        }
+
+        .club-officials {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .official {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .official h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .announcements {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .announcement {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .announcement-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Notifications Section */
+        .notifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .notification-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .notification-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        /* Admin Login */
+        .admin-login {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .admin-login h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .login-error {
+            color: var(--danger);
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Admin Controls */
+        .admin-controls {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .tab-container {
+            margin-top: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+
+        .tab.active {
+            background: white;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-users fa-2x"></i>
+                <h1>AIT Pune Student Clubs</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#clubs">All Clubs</a></li>
+                    <li><a href="#council">Student Council</a></li>
+                    <li><a href="#notifications">Notifications</a></li>
+                    <li><a href="#admin">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to AIT Student Clubs Portal</h2>
+            <p>Discover, join, and engage with over 25 student clubs and organizations. Explore your passions, develop new skills, and connect with like-minded students.</p>
+        </div>
+    </section>
+
+    <!-- All Clubs Section -->
+    <section id="clubs">
+        <div class="container">
+            <h2 class="section-title">All Clubs</h2>
+            <div class="clubs-container">
+                <!-- Club 1 -->
+                <div class="club-card" id="club-coding">
+                    <div class="club-header">
+                        <h3>Computating Programming Club</h3>
+                    </div>
+                    <div class="club-body">
+                        <div class="club-officials">
+                            <div class="official">
+                                <h4>Secretary</h4>
+                                <p class="secretary-names">Rahul Sharma, Priya Patel</p>
+                            </div>
+                            <div class="official">
+                                <h4>Joint Secretary</h4>
+                                <p class="joint-secretary-names">Bobby rajput, Sahil</p>
+                            </div>
+                        </div>
+                        <div class="announcements">
+                            <h4>Announcements</h4>
+                            <div class="announcement-list">
+                                <div class="announcement">
+                                    <p>Hackathon scheduled for next Saturday. Register now!</p>
+                                    <div class="announcement-date">Posted on: 05/09/2025</div>
+                                </div>
+                                <div class="announcement">
+                                    <p>C++ workshop this Wednesday at 4 PM in PSTl 2.</p>
+                                    <div class="announcement-date">Posted on: 01/09/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club 2 -->
+                <div class="club-card" id="club-robotics">
+                    <div class="club-header">
+                        <h3>Robotics Club</h3>
+                    </div>
+                    <div class="club-body">
+                        <div class="club-officials">
+                            <div class="official">
+                                <h4>Secretary</h4>
+                                <p class="secretary-names">Arjun Singh, Neha Gupta</p>
+                            </div>
+                            <div class="official">
+                                <h4>Joint Secretary</h4>
+                                <p class="joint-secretary-names">Krish dixit, Abhijeet Tomar</p>
+                            </div>
+                        </div>
+                        <div class="announcements">
+                            <h4>Announcements</h4>
+                            <div class="announcement-list">
+                                <div class="announcement">
+                                    <p>New robotics kit has arrived. Club members can use from tomorrow.</p>
+                                    <div class="announcement-date">Posted on: 03/09/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club 3 -->
+                <div class="club-card" id="club-oss">
+                    <div class="club-header">
+                        <h3>Open Source Software Club</h3>
+                    </div>
+                    <div class="club-body">
+                        <div class="club-officials">
+                            <div class="official">
+                                <h4>Secretary</h4>
+                                <p class="secretary-names">Kaushal Vyas, Deepshika Rawat</p>
+                            </div>
+                            <div class="official">
+                                <h4>Joint Secretary</h4>
+                                <p class="joint-secretary-names">Anmol Singh, Amaresh Singh</p>
+                            </div>
+                        </div>
+                        <div class="announcements">
+                            <h4>Announcements</h4>
+                            <div class="announcement-list">
+                                <div class="announcement">
+                                    <p>Graphica is on 13 sept 2025 at 0900 hours</p>
+                                    <p>Venue : Aryabhatta Centre</p>
+                                    <div class="announcement-date">Posted on: 04/09/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary">View All Clubs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Council Section -->
+    <section id="council" style="background-color: #e8f4fc;">
+        <div class="container">
+            <h2 class="section-title">Student Council Mails</h2>
+            <div class="notification-card" id="council-notifications">
+                <h3>Latest Communications</h3>
+                <div class="council-list">
+                    <div class="notification-item">
+                        <p><strong>From: Student Council President</strong> - Date: 05/09/2025</p>
+                        <p>Reminder: Hostel intime for FE's who are participating in cultural akriti is 12:00 am.</p>
+                    </div>
+                    <div class="notification-item">
+                        <p><strong>From: Cultural Committee</strong> - Date: 03/09/2025</p>
+                        <p>Cultural Akriti meeting will be on 10/09/2025 at 1000 hours. Club Secretary must attend.</p>
+                    </div>
+                    <div class="notification-item">
+                        <p><strong>From: Sports Committee</strong> - Date: 01/09/2025</p>
+                        <p>Sports Akriti registration is now open.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section id="notifications">
+        <div class="container">
+            <h2 class="section-title">Important Notifications</h2>
+            <div class="notifications">
+                <div class="notification-card" id="academic-notifications">
+                    <h3>Academic</h3>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <p>Mid-term exams schedule has been posted on the college website.</p>
+                        </div>
+                        <div class="notification-item">
+                            <p>Last date for project submissions extended to September 20th.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification-card" id="events-notifications">
+                    <h3>Events</h3>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <p>Technical Akriti will be held from November 15-17.</p>
+                        </div>
+                        <div class="notification-item">
+                            <p>Workshop on AI and Machine Learning this Saturday.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification-card" id="general-notifications">
+                    <h3>General</h3>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <p>College cafeteria will remain closed this Sunday for maintenance.</p>
+                        </div>
+                        <div class="notification-item">
+                            <p>College timings have been changed for the winter season.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel Section -->
+    <section id="admin" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Admin Panel</h2>
+            
+            <!-- Admin Login Form -->
+            <div class="admin-login" id="admin-login">
+                <h3>Admin Authentication Required</h3>
+                <div class="form-group">
+                    <label for="admin-password">Enter Admin Password</label>
+                    <input type="password" id="admin-password" placeholder="Enter password">
+                </div>
+                <button class="btn btn-primary" id="login-btn">Login</button>
+                <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+            </div>
+            
+            <!-- Admin Controls (Initially Hidden) -->
+            <div class="admin-controls" id="admin-controls">
+                <div class="tabs">
+                    <div class="tab active" data-tab="clubs">Update Clubs</div>
+                    <div class="tab" data-tab="council">Update Council</div>
+                    <div class="tab" data-tab="notifications">Update Notifications</div>
+                </div>
+                
+                <!-- Clubs Tab -->
+                <div class="tab-content active" id="clubs-tab">
+                    <div class="admin-panel">
+                        <form class="admin-form" id="club-update-form">
+                            <div class="form-group">
+                                <label for="club-select">Select Club</label>
+                                <select id="club-select">
+                                    <option value="">-- Select a Club --</option>
+                                    <option value="coding">Computating Programming Club</option>
+                                    <option value="robotics">Robotics Club</option>
+                                    <option value="oss">Open Source Software Club</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="secretary">Secretary Name(s)</label>
+                                <input type="text" id="secretary" placeholder="Enter secretary names (comma separated)">
+                            </div>
+                            <div class="form-group">
+                                <label for="joint-secretary">Joint Secretary Name(s)</label>
+                                <input type="text" id="joint-secretary" placeholder="Enter joint secretary names (comma separated)">
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="announcement">New Announcement</label>
+                                <textarea id="announcement" placeholder="Enter new announcement"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="announcement-date">Announcement Date</label>
+                                <input type="date" id="announcement-date">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="update-club-btn">Update Club Info</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="clear-club-form">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Council Tab -->
+                <div class="tab-content" id="council-tab">
+                    <div class="admin-panel">
+                        <form class="admin-form" id="council-update-form">
+                            <div class="form-group">
+                                <label for="council-sender">Sender</label>
+                                <input type="text" id="council-sender" placeholder="e.g., Student Council President">
+                            </div>
+                            <div class="form-group">
+                                <label for="council-date">Date</label>
+                                <input type="date" id="council-date">
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="council-message">Message</label>
+                                <textarea id="council-message" placeholder="Enter council message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="add-council-btn">Add Council Message</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="clear-council-form">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Notifications Tab -->
+                <div class="tab-content" id="notifications-tab">
+                    <div class="admin-panel">
+                        <form class="admin-form" id="notification-update-form">
+                            <div class="form-group">
+                                <label for="notification-type">Notification Type</label>
+                                <select id="notification-type">
+                                    <option value="academic">Academic</option>
+                                    <option value="events">Events</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="notification-message">Notification Message</label>
+                                <textarea id="notification-message" placeholder="Enter notification message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="add-notification-btn">Add Notification</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="clear-notification-form">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 AIT Pune - Student Clubs Portal. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Admin Password
+        const ADMIN_PASSWORD = "admin1123";
+        let isAdminLoggedIn = false;
+        
+        // DOM Elements
+        const adminLoginSection = document.getElementById('admin-login');
+        const adminControlsSection = document.getElementById('admin-controls');
+        const loginBtn = document.getElementById('login-btn');
+        const passwordInput = document.getElementById('admin-password');
+        const loginError = document.getElementById('login-error');
+        
+        // Tab Elements
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Login Functionality
+        loginBtn.addEventListener('click', function() {
+            if (passwordInput.value === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                adminLoginSection.style.display = 'none';
+                adminControlsSection.style.display = 'block';
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+        
+        // Tab Switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Club Update Functionality
+        const clubSelect = document.getElementById('club-select');
+        const secretaryInput = document.getElementById('secretary');
+        const jointSecretaryInput = document.getElementById('joint-secretary');
+        const announcementInput = document.getElementById('announcement');
+        const announcementDateInput = document.getElementById('announcement-date');
+        const updateClubBtn = document.getElementById('update-club-btn');
+        const clearClubFormBtn = document.getElementById('clear-club-form');
+        
+        // Set today's date as default for announcement date
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        announcementDateInput.value = `${yyyy}-${mm}-${dd}`;
+        
+        // Update club info
+        updateClubBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) {
+                alert('Please login as admin first.');
+                return;
+            }
+            
+            const clubId = clubSelect.value;
+            if (!clubId) {
+                alert('Please select a club first.');
+                return;
+            }
+            
+            const clubElement = document.getElementById(`club-${clubId}`);
+            
+            // Update officials if provided
+            if (secretaryInput.value) {
+                const secretaryNames = clubElement.querySelector('.secretary-names');
+                secretaryNames.textContent = secretaryInput.value;
+            }
+            
+            if (jointSecretaryInput.value) {
+                const jointSecretaryNames = clubElement.querySelector('.joint-secretary-names');
+                jointSecretaryNames.textContent = jointSecretaryInput.value;
+            }
+            
+            // Add announcement if provided
+            if (announcementInput.value) {
+                const announcementList = clubElement.querySelector('.announcement-list');
+                const announcementDate = announcementDateInput.value;
+                const formattedDate = `${announcementDate.split('-')[2]}/${announcementDate.split('-')[1]}/${announcementDate.split('-')[0]}`;
+                
+                const newAnnouncement = document.createElement('div');
+                newAnnouncement.className = 'announcement';
+                newAnnouncement.innerHTML = `
+                    <p>${announcementInput.value}</p>
+                    <div class="announcement-date">Posted on: ${formattedDate}</div>
+                `;
+                
+                announcementList.prepend(newAnnouncement);
+            }
+            
+            alert('Club information updated successfully!');
+            clearClubForm();
+        });
+        
+        // Clear club form
+        clearClubFormBtn.addEventListener('click', clearClubForm);
+        
+        function clearClubForm() {
+            secretaryInput.value = '';
+            jointSecretaryInput.value = '';
+            announcementInput.value = '';
+            announcementDateInput.value = `${yyyy}-${mm}-${dd}`;
+        }
+        
+        // Council Update Functionality
+        const councilSenderInput = document.getElementById('council-sender');
+        const councilDateInput = document.getElementById('council-date');
+        const councilMessageInput = document.getElementById('council-message');
+        const addCouncilBtn = document.getElementById('add-council-btn');
+        const clearCouncilFormBtn = document.getElementById('clear-council-form');
+        
+        // Set today's date as default for council date
+        councilDateInput.value = `${yyyy}-${mm}-${dd}`;
+        
+        // Add council message
+        addCouncilBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) {
+                alert('Please login as admin first.');
+                return;
+            }
+            
+            if (!councilSenderInput.value || !councilMessageInput.value) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            const councilList = document.querySelector('.council-list');
+            const councilDate = councilDateInput.value;
+            const formattedDate = `${councilDate.split('-')[2]}/${councilDate.split('-')[1]}/${councilDate.split('-')[0]}`;
+            
+            const newCouncilItem = document.createElement('div');
+            newCouncilItem.className = 'notification-item';
+            newCouncilItem.innerHTML = `
+                <p><strong>From: ${councilSenderInput.value}</strong> - Date: ${formattedDate}</p>
+                <p>${councilMessageInput.value}</p>
+            `;
+            
+            councilList.prepend(newCouncilItem);
+            alert('Council message added successfully!');
+            clearCouncilForm();
+        });
+        
+        // Clear council form
+        clearCouncilFormBtn.addEventListener('click', clearCouncilForm);
+        
+        function clearCouncilForm() {
+            councilSenderInput.value = '';
+            councilDateInput.value = `${yyyy}-${mm}-${dd}`;
+            councilMessageInput.value = '';
+        }
+        
+        // Notification Update Functionality
+        const notificationTypeSelect = document.getElementById('notification-type');
+        const notificationMessageInput = document.getElementById('notification-message');
+        const addNotificationBtn = document.getElementById('add-notification-btn');
+        const clearNotificationFormBtn = document.getElementById('clear-notification-form');
+        
+        // Add notification
+        addNotificationBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) {
+                alert('Please login as admin first.');
+                return;
+            }
+            
+            if (!notificationMessageInput.value) {
+                alert('Please enter a notification message.');
+                return;
+            }
+            
+            const notificationType = notificationTypeSelect.value;
+            const notificationList = document.querySelector(`#${notificationType}-notifications .notification-list`);
+            
+            const newNotificationItem = document.createElement('div');
+            newNotificationItem.className = 'notification-item';
+            newNotificationItem.innerHTML = `<p>${notificationMessageInput.value}</p>`;
+            
+            notificationList.prepend(newNotificationItem);
+            alert('Notification added successfully!');
+            clearNotificationForm();
+        });
+        
+        // Clear notification form
+        clearNotificationFormBtn.addEventListener('click', clearNotificationForm);
+        
+        function clearNotificationForm() {
+            notificationMessageInput.value = '';
+        }
+    </script>
+</body>
+</html>

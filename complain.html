@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIT PUNE CAMPUS CARE PRO </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Header Styles */
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #e1e8ff;
+            margin-bottom: 30px;
+        }
+        
+        .logo-box {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(78, 84, 200, 0.3);
+            text-align: center;
+        }
+        
+        .logo-box h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 107, 107, 0.4);
+        }
+        /* Navigation */
+        
+        nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 12px 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #0611da;
+            border: 2px solid transparent;
+        }
+        
+        .nav-tab:hover,
+        .nav-tab.active {
+            background-color: #4e54c8;
+            color: white;
+            transform: translateY(-3px);
+        }
+        /* Hero Section */
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: linear-gradient(to right, #f5f8ff, #e1e8ff);
+            border-radius: 15px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            color: #4e54c8;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        /* Anti-ragging Section */
+        
+        .anti-ragging {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+        }
+        
+        .anti-ragging h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .anti-ragging p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .anti-ragging a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        /* Complaint Categories */
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .category {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category i {
+            font-size: 2.5rem;
+            color: #4e54c8;
+            margin-bottom: 15px;
+        }
+        
+        .category h3 {
+            color: #4e54c8;
+            margin-bottom: 10px;
+        }
+        /* Footer Section */
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: white;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        footer h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        footer p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+        
+        .signature {
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-top: 20px;
+        }
+        /* Chatbot Styles */
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(78, 84, 200, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .chatbot-box {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-messages {
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .bot-message {
+            background: #e6e9ff;
+            color: #4e54c8;
+            border-top-left-radius: 0;
+        }
+        
+        .user-message {
+            background: #4e54c8;
+            color: white;
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chatbot-input button {
+            background: #4e54c8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            nav {
+                justify-content: center;
+            }
+            .categories {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .chatbot-box {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-box">
+                <h1>AIT PUNE CAMPUS CARE PRO </h1>
+            </div><button class="submit-btn"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeh8c9v_2NhJUOlhPyJ9ukSJABl-C0UqdtE877Ao7xRRH4Isg/viewform?usp=dialog">SUBMIT COMPLAINT</a></button></header>
+        <nav>
+            <div class="nav-tab active">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeh8c9v_2NhJUOlhPyJ9ukSJABl-C0UqdtE877Ao7xRRH4Isg/viewform?usp=dialog">Complaint</a></div>
+            <div class=" nav-tab ">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXCb5EAujcXTnfqLviU4aXkiOD69gzsocEA7xHdMDTwhsY6Q/viewform?usp=dialog " />Feedback
+                </a>
+            </div>
+            <div class=" nav-tab ">Register</div>
+        </nav>
+        <section class="hero ">
+            <h2>YOUR VOICE OUR PRIORITY</h2>
+            <p>Help us create a better campus experience by sharing your feedback on academics, dining, and accommodation services.</p>
+        </section>
+        <section class="anti-ragging ">
+            <a href="https://www.antiragging.in " />
+            <h3>RAGGING NOT ACCEPTABLE AT ANY COST</h3>
+            <p>YOUR PROTECTION OUR PRIORITY - REPORT ANONYMOUSLY</p><a href=" # ">Anti-Ragging Section</a></section>
+        <section class="categories ">
+            <div class="category "><i class="fas fa-book "></i>
+                <h3>Academics</h3>
+            </div>
+            <div class="category "><i class="fas fa-basketball-ball "></i>
+                <h3>Sports</h3>
+            </div>
+            <div class="category "><i class="fas fa-utensils "></i>
+                <h3>Mess Food</h3>
+            </div>
+            <div class="category "><i class="fas fa-bed "></i>
+                <h3>Hostel</h3>
+            </div>
+            <div class="category "><i class="fas fa-ellipsis-h "></i>
+                <h3>Others</h3>
+            </div>
+        </section>
+        <footer>
+            <h2>Ready to Make Your Voice Heard?</h2>
+            <p>Join hundreds of students who are actively helping improve our campus community through constructive feedback.</p>
+            <p>Why should you complain?
+                </br>
+                Because we are here for you to help you at each and everyproblem you faced.
+            </p>
+            <p class="signature ">With love, AITIAN FAMILY</p>
+            <h4>follow us-
+                <ul>
+                    <li> <a href="https://www.instagram.com/">instagram</a>
+                    </li>
+                    <li>
+                        <a href="https://x.com/home">
+                            X </a></li>
+            </h4>
+            </ul>
+        </footer>
+    </div>
+    <!-- Chatbot Container -->
+    <div class=" chatbot-container ">
+        <div class="chatbot-box " id="chatbotBox ">
+            <div class="chatbot-header ">
+                <h3>Campus Care Assistant</h3><span id="closeChatbot " style="cursor: pointer; ">✕</span></div>
+            <div class="chatbot-messages " id="chatMessages ">
+                <div class="message bot-message ">Hello! How can I help you with your campus concerns today? </div>
+            </div>
+            <div class="chatbot-input "><input type="text " id="userInput " placeholder="Type your message... "><button id="sendMessage ">Send</button></div>
+        </div>
+        <div class="chatbot-button " id="chatbotButton "><i class="fas fa-comment-dots "></i></div>
+    </div>
+    <script>
+        // Chatbot functionality
+        document.addEventListener('DOMContentLoaded', function() {
+                const chatbotButton = document.getElementById('chatbotButton');
+                const closeChatbot = document.getElementById('closeChatbot');
+                const chatbotBox = document.getElementById('chatbotBox');
+                const userInput = document.getElementById('userInput');
+                const sendMessage = document.getElementById('sendMessage');
+                const chatMessages = document.getElementById('chatMessages');
+                // Toggle chatbot visibility
+                chatbotButton.addEventListener('click', function() {
+                    chatbotBox.style.display = chatbotBox.style.display === 'block' ? 'none' : 'block';
+                });
+                closeChatbot.addEventListener('click', function() {
+                    chatbotBox.style.display = 'none';
+                });
+                // Send message function
+                function sendUserMessage() {
+                    const message = userInput.value.trim();
+                    if (message === '') return;
+                    // Add user message
+                    addMessage(message, 'user');
+                    userInput.value = '';
+                    // Simulate bot response after a short delay
+                    setTimeout(() => {
+                        let botResponse = "Thank you for your message. Our team will get back to you soon. ";
+                        // Simple response logic based on keywords
+                        if (message.toLowerCase().includes('complaint') || message.toLowerCase().includes('issue')) {
+                            botResponse = "I understand you have a concern. Please provide more details so we can assist you better. ";
+                        } else if (message.toLowerCase().includes('ragging')) {
+                            botResponse = "Ragging is strictly prohibited. For immediate assistance, please contact the anti-ragging helpline at 1800-180-5522. ";
+                        } else if (message.toLowerCase().includes('hostel') || message.toLowerCase().includes('accommodation')) {
+                            botResponse = "For hostel-related issues, you can contact the hostel warden at hostel@aitpune.edu.in or call 020-12345678. ";
+                        } else if (message.toLowerCase().includes('food') || message.toLowerCase().includes('mess')) {
+                            botResponse = "For food-related complaints, please specify the issue and mess hall. Our catering manager will address it promptly. ";
+                        } else if (message.toLowerCase().includes('academic') || message.toLowerCase().includes('course')) {
+                            botResponse = "For academic concerns, please contact your department head or email academics@aitpune.edu.in. ";
+                        }
+                        addMessage(botResponse, 'bot');
+                    }, 1000);
+                }
+                // Add message to chat
+                function addMessage(text, sender) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message');
+                    messageDiv.classList.add(sender + '-message');
+                    messageDiv.textContent = text;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+                // Event listeners for sending messages
+                sendMessage.addEventListener('click', sendUserMessage);
+                userInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendUserMessage();
+                    }
+                });
+                // Category click event
+                const categories = document.querySelectorAll('.category');
+                categories.forEach(category => {
+                    category.addEventListener('click', function() {
+                        const categoryName = this.querySelector('h3').textContent;
+                        chatbotBox.style.display = 'block';
+                        // Add a message about the selected category
+                        addMessage(`I have a concern regarding $ {
+                categoryName
+            }
+            .`, 'user');
+                        // Bot response
+                        setTimeout(() => {
+                            let response = `Please tell me more about your $ {
+                    categoryName
+                }
+                concern.`;
+                            if (categoryName === 'Academics') {
+                                response = "For academic issues, please specify whether it 's about courses, faculty, schedules, or other concerns.";
+                            } else if (categoryName === 'Sports ') {
+                                response = "For sports facilities, please mention the specific equipment, ground, or availability issue you're facing. ";
+                            } else if (categoryName === 'Mess Food') {
+                                response = "For mess food complaints, please specify the issue (quality, variety, hygiene) and the meal time. ";
+                            } else if (categoryName === 'Hostel') {
+                                response = "For hostel issues, please specify whether it 's about maintenance, amenities, rules, or other concerns.";
+                            }
+                            addMessage(response, 'bot ');
+                        }, 1000);
+                    });
+                });
+                // Submit complaint button
+                document.querySelector('.submit-btn ').addEventListener('click ', function() {
+                    chatbotBox.style.display = 'block ';
+                    addMessage("I'd like to submit a formal complaint. ", 'user');
+                    setTimeout(() => {
+                        addMessage("Please provide details of your complaint. Our team will review it and take appropriate action. ", 'bot');
+                    }, 1000);
+                });
+            }
+
+        );
+    </script>
+</body>
+
+</html>
